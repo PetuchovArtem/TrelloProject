@@ -22,7 +22,7 @@ public class InputLoginPage {
     @FindBy(xpath = "//button[@id=\"login-submit\"]")
     private SelenideElement loginButton;
 
-        public BoardsPage setLoginField() {
+        public BoardsPage setLoginField()  {
         inputLoginField.setValue(EMAIL);
         loginWithAtlassianButton.click();
         inputPasswordField.setValue(PASS);
