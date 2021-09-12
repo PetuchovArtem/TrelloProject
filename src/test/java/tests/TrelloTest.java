@@ -5,17 +5,16 @@ import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideDriver;
 import com.codeborne.selenide.SelenideElement;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import static com.codeborne.selenide.Selenide.*;
 
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class TrelloTest {
 
     public LoginPage mainPage;
@@ -26,7 +25,6 @@ public class TrelloTest {
 
     @BeforeAll
     public static void setUp() {
-
         Configuration.browser = "chrome";
         Configuration.startMaximized = true;
         System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
@@ -37,7 +35,13 @@ public class TrelloTest {
         mainPage = open("https://trello.com/", LoginPage.class);
     }
 
+    @AfterEach
+    public void clouseBrowser(){
+        closeWebDriver();
+    }
+
     @Test
+    @Order(1)
     public void testCreateNewBoard() {
         CurrentBoardPage inputLoginPage = mainPage.clickLoginButton()
                 .setLoginField().createNewBoard(newBoardName);
@@ -47,6 +51,7 @@ public class TrelloTest {
     }
 
     @Test
+    @Order(2)
     public void testCreateNewListWithCard() {
         CurrentBoardPage inputLoginPage = mainPage.clickLoginButton()
                 .setLoginField().openCurrentBoard(newBoardName);
@@ -60,6 +65,7 @@ public class TrelloTest {
     }
 
     @Test
+    @Order(3)
     public void testMoveCard() {
         CurrentBoardPage boardpage = mainPage.clickLoginButton()
                 .setLoginField().openCurrentBoard(newBoardName);
@@ -70,6 +76,7 @@ public class TrelloTest {
 
 
     @Test
+    @Order(4)
     public void testSearchBoardByName() {
         CurrentBoardPage boardsPage = mainPage.clickLoginButton()
                 .setLoginField().searchBoardByName(newBoardName);
@@ -79,6 +86,7 @@ public class TrelloTest {
     }
 
     @Test
+    @Order(4)
     public void testSearchCardByName() {
 
         CurrentBoardPage boardsPage = mainPage.clickLoginButton()
@@ -87,6 +95,7 @@ public class TrelloTest {
     }
 
     @Test
+    @Order(5)
     public void testDeleteBoard() {
         String actualDeletePage = "name12 is closed.";
         CurrentBoardPage boardpage = mainPage.clickLoginButton()
