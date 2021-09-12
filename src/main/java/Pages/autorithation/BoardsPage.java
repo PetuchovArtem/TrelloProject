@@ -12,12 +12,10 @@ import static com.codeborne.selenide.Selenide.webdriver;
 public class BoardsPage {
 
 
-
-
     @FindBy(xpath = "//*[@id=\"header\"]/div[2]/div[1]/button/p")
     private SelenideElement createButton;
 
-    @FindBy(xpath = "//div[@title=\"name1\"]")
+    @FindBy(xpath = "//div[@title=\"name12\"]")
     private SelenideElement currentBoardTitle;
 
 
@@ -37,12 +35,19 @@ public class BoardsPage {
     private SelenideElement createButtonHeader;
 
 
+    @FindBy(xpath ="//input[@data-test-id=\"header-search-input\"]")
+    private SelenideElement searchFieldHeader;
+
+    @FindBy(xpath ="//div[@class=\"_1FugStgZVlKzlN _2yyH4oJxGIImM2\"]")
+    private SelenideElement searchBoardResult;
+
+    //div[text()[contains(.,'newCardName1')]]
+    @FindBy(xpath ="//a[text()[contains(.,'newCardName1')]]")
+    private SelenideElement searchCardResult;
+
+
     @FindBy(xpath = "//span[@class=\"mEyEHQTeZbhjil\"]")
     private SelenideElement userEmailField;
-
-
-
-
 
 
     public CurrentBoardPage createNewBoard(String title){
@@ -69,6 +74,22 @@ public class BoardsPage {
         profillerButton.click();
         return this;
     }
+
+    public CurrentBoardPage searchBoardByName(String title){
+        searchFieldHeader.click();
+        searchFieldHeader.setValue(title);
+        searchBoardResult.click();
+        return page(CurrentBoardPage.class);
+    }
+
+
+    public CurrentBoardPage searchCardByName(String title){
+        searchFieldHeader.click();
+        searchFieldHeader.setValue(title);
+        searchCardResult.click();
+        return page(CurrentBoardPage.class);
+    }
+
 
     public String getUserEmail() {
           return userEmailField.text();
