@@ -84,7 +84,6 @@ public class TrelloTest {
         String actualPageName = boardsPage.getPageName();
         Assertions.assertEquals(newBoardName, actualPageName);
     }
-
     @Test
     @Order(4)
     public void testSearchCardByName() {
