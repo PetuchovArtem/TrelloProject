@@ -1,4 +1,4 @@
-package tests;
+package tests.ui;
 
 import Pages.autorithation.*;
 import com.codeborne.selenide.Configuration;
