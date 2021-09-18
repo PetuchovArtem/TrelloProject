@@ -5,6 +5,7 @@ import io.cucumber.java.en.Then;
 import net.minidev.json.parser.ParseException;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
+import org.apache.http.client.methods.HttpDelete;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.client.methods.HttpPut;
 import org.apache.http.client.methods.HttpRequestBase;
@@ -33,9 +34,10 @@ public class CreateItemsSteps {
     public static String secondListId = "";
     public static String cadrId = "";
     public static String newBoardName = "NewBoardApi";
-    public final String newListName = "newListName1";
+    public static String newListName = "newListName1";
     public static String secondListName = "newListName2";
-    public final String newCardName = "newCardApi";
+    public static String newCardName = "newCardApi";
+    public static int status = 0;
 
     @And("user is creating a board with name")
     public String createBoarApi() throws IOException, URISyntaxException, ParseException {
@@ -185,10 +187,30 @@ public class CreateItemsSteps {
         return newListid;
     }
 
+    @And("user is deleting last board")
+    public int DeleteBoardApi() throws URISyntaxException, IOException {
+        CloseableHttpClient httpClient = HttpClients.createDefault();
+        HttpDelete delBoard = new HttpDelete("https://api.trello.com/1/boards/" + boardId);
+        URI uri = new URIBuilder(delBoard.getURI())
+                .addParameter("key", KEY)
+                .addParameter("token", TOKEN)
+                .build();
+        ((HttpRequestBase) delBoard).setURI(uri);
+        HttpResponse response = httpClient.execute(delBoard);
+
+        status = response.getStatusLine().getStatusCode();
+        return status;
+    }
+
 
     @Then("card is moved")
     public void assertCardIsMovedApi (){
         Assertions.assertEquals(secondListId, newListid);
+    }
+
+    @Then("board is deleted")
+    public void assertDeletBoardApi (){
+        Assertions.assertEquals(200, status);
     }
 
     @Then("board is created")

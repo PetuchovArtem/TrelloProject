@@ -56,7 +56,6 @@ public class TrelloApiTests {
         Assertions.assertEquals(boardId, searchBoardId);
     }
 
-
     @Test
     @Order(4)
     public void testSearchCardByNameApi() throws IOException, URISyntaxException{
