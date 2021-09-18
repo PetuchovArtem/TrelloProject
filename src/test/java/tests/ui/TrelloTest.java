@@ -1,16 +1,10 @@
 package tests.ui;
 
-import Pages.autorithation.*;
 import com.codeborne.selenide.Configuration;
-import com.codeborne.selenide.Selenide;
-import com.codeborne.selenide.SelenideDriver;
-import com.codeborne.selenide.SelenideElement;
 import org.junit.jupiter.api.*;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
+import pages.CurrentBoardPage;
+import pages.DeleteBoardPage;
+import pages.LoginPage;
 
 import static com.codeborne.selenide.Selenide.*;
 

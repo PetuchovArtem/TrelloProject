@@ -1,13 +1,9 @@
-package Pages.autorithation;
+package pages;
 
-import com.codeborne.selenide.SelenideDriver;
 import com.codeborne.selenide.SelenideElement;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 import static com.codeborne.selenide.Selenide.page;
-import static com.codeborne.selenide.Selenide.webdriver;
 
 public class BoardsPage {
 
@@ -38,7 +34,7 @@ public class BoardsPage {
     @FindBy(xpath ="//input[@data-test-id=\"header-search-input\"]")
     private SelenideElement searchFieldHeader;
 
-    @FindBy(xpath ="//div[@class=\"_1FugStgZVlKzlN _2yyH4oJxGIImM2\"]")
+    @FindBy(xpath ="//a[@class=\"UkYOk3zeW6i9_-\"]")
     private SelenideElement searchBoardResult;
 
     //div[text()[contains(.,'newCardName1')]]

@@ -1,4 +1,4 @@
-package tests.api;
+package tests.api.pagesApi;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -31,7 +31,7 @@ public class Autorithation {
         HttpResponse response = httpClient.execute(tokenRequest);
         HttpEntity entity = response.getEntity();
         String responseString = EntityUtils.toString(entity, "UTF-8");
-        System.out.println(responseString);
+//        System.out.println(responseString);
 
     }
 

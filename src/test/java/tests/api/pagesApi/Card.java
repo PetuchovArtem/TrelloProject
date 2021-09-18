@@ -3,6 +3,7 @@ package tests.api.pagesApi;
 import net.minidev.json.parser.ParseException;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
+import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.client.methods.HttpPut;
 import org.apache.http.client.methods.HttpRequestBase;
@@ -46,13 +47,13 @@ public class Card {
         HttpEntity entity = response.getEntity();
         String content = EntityUtils.toString(entity);
         String responseJson = "[" + content + "]";
-        System.out.println(responseJson);
+//        System.out.println(responseJson);
         JSONArray body = new JSONArray(responseJson);
 
         JSONObject album = body.getJSONObject(0);
 
         String NewCardId = album.getString("id");
-        System.out.println(NewCardId);
+//        System.out.println(NewCardId);
         return NewCardId;
 
     }
@@ -78,13 +79,38 @@ public class Card {
         HttpEntity entity = response.getEntity();
         String content = EntityUtils.toString(entity);
         String responseJson = "[" + content + "]";
-        System.out.println(response.getStatusLine());
+//        System.out.println(response.getStatusLine());
            JSONArray body = new JSONArray(responseJson);
 
            JSONObject album = body.getJSONObject(0);
 
            String NewListId = album.getString("idList");
-           System.out.println(NewListId);
+//           System.out.println(NewListId);
            return NewListId;
     }
+
+    public String SearchCardByNameApi(String cardName) throws URISyntaxException, IOException {
+        CloseableHttpClient httpClient = HttpClients.createDefault();
+        HttpGet getCard = new HttpGet("https://trello.com/1/search");
+        URI uri = new URIBuilder(getCard.getURI())
+                .addParameter("key", KEY)
+                .addParameter("token", TOKEN)
+                .addParameter("query", cardName)
+                .addParameter("card_list", "true")
+                .addParameter("dsc", "ed85951402843d1b78ca87ed1a5811e8d85b637ca93a9bbba8f0bf0b077a1676")
+                .build();
+        ((HttpRequestBase) getCard).setURI(uri);
+        HttpResponse response = httpClient.execute(getCard);
+        HttpEntity entity = response.getEntity();
+        String content = EntityUtils.toString(entity);
+
+        JSONObject obj = new JSONObject(content);
+//        System.out.println(obj.toString());
+        JSONArray arr = obj.getJSONArray("cards");
+        String card_id = arr.getJSONObject(0).getString("id");
+
+        return card_id;
+    }
+
+
 }

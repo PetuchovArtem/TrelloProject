@@ -1,8 +1,11 @@
 package tests.api.pagesApi;
 
 import net.minidev.json.parser.ParseException;
+import org.apache.commons.lang3.ObjectUtils;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
+import org.apache.http.client.methods.HttpDelete;
+import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.client.methods.HttpRequestBase;
 import org.apache.http.client.utils.URIBuilder;
@@ -20,15 +23,12 @@ import java.net.URI;
 import java.net.URISyntaxException;
 
 
-
 public class Board {
 
 
     public final String KEY = "0a9e486762e8fec2cd7d6327d23869e1";
     public final String TOKEN = "e19d1c3441e45d4a21d4e1f72a7144e4c51dfd433cbb0171454314ec08ca81e1";
     public final String DEFAULTLIST = "false";
-
-
 
 
     public String createBoarApi(String boardName) throws IOException, URISyntaxException, ParseException {
@@ -53,20 +53,51 @@ public class Board {
         JSONArray body = new JSONArray(responseJson);
 
         JSONObject album = body.getJSONObject(0);
-        String BoardId = album.getString("id");
-        System.out.println(BoardId);
+        String boardId = album.getString("id");
+//        System.out.println(boardId);
 
-        return BoardId;
+        return boardId;
+    }
+
+    //    String searchParam
+
+
+    public String SearchBoardByNameApi(String boardName) throws URISyntaxException, IOException {
+        CloseableHttpClient httpClient = HttpClients.createDefault();
+        HttpGet getBoard = new HttpGet("https://trello.com/1/search");
+        URI uri = new URIBuilder(getBoard.getURI())
+                .addParameter("key", KEY)
+                .addParameter("token", TOKEN)
+                .addParameter("query", boardName)
+                .addParameter("board_fields", "name%2Curl%2Cprefs")
+                .addParameter("dsc", "ed85951402843d1b78ca87ed1a5811e8d85b637ca93a9bbba8f0bf0b077a1676")
+                .build();
+        ((HttpRequestBase) getBoard).setURI(uri);
+        HttpResponse response = httpClient.execute(getBoard);
+        HttpEntity entity = response.getEntity();
+        String content = EntityUtils.toString(entity);
+
+        JSONObject obj = new JSONObject(content);
+        JSONArray arr = obj.getJSONArray("boards");
+        String board_id = arr.getJSONObject(0).getString("id");
+
+        return board_id;
     }
 
 
-find board
-    https://trello.com/1/search?query=nrene&board_fields=name%2Curl%2Cprefs&dsc=ed85951402843d1b78ca87ed1a5811e8d85b637ca93a9bbba8f0bf0b077a1676&key=0a9e486762e8fec2cd7d6327d23869e1&token=e19d1c3441e45d4a21d4e1f72a7144e4c51dfd433cbb0171454314ec08ca81e1
+    public int DeleteBoardApi(String boardId) throws URISyntaxException, IOException {
+        CloseableHttpClient httpClient = HttpClients.createDefault();
+        HttpDelete delBoard = new HttpDelete("https://api.trello.com/1/boards/" + boardId);
+        URI uri = new URIBuilder(delBoard.getURI())
+                .addParameter("key", KEY)
+                .addParameter("token", TOKEN)
+                .build();
+        ((HttpRequestBase) delBoard).setURI(uri);
+        HttpResponse response = httpClient.execute(delBoard);
 
-    find card
-    https://trello.com/1/search?query=card1&card_list=true&dsc=ed85951402843d1b78ca87ed1a5811e8d85b637ca93a9bbba8f0bf0b077a1676&key=0a9e486762e8fec2cd7d6327d23869e1&token=e19d1c3441e45d4a21d4e1f72a7144e4c51dfd433cbb0171454314ec08ca81e1
-
-
+        int status = response.getStatusLine().getStatusCode();
+        return status;
+    }
 
 }
 

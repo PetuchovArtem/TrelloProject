@@ -46,10 +46,10 @@ public class Lists {
         HttpEntity entity = response.getEntity();
         String content = EntityUtils.toString(entity);
         String responseJson = "[" + content + "]";
-        System.out.println(responseJson);
+//        System.out.println(responseJson);
         JSONObject album = new JSONObject(content);
         String NewListId = album.getString("id");
-        System.out.println(NewListId);
+//        System.out.println(NewListId);
         return NewListId;
     }
 

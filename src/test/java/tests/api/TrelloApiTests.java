@@ -23,7 +23,7 @@ public class TrelloApiTests {
     public static String newBoardName = "NewBoardApi";
     public final String newListName = "newListName1";
     public static String secondListName = "newListName2";
-    public final String newCardName = "NewCARD";
+    public final String newCardName = "newCardApi";
 
     @Test
     @Order(1)
@@ -49,5 +49,26 @@ public class TrelloApiTests {
         Assertions.assertEquals(secondListId, movecard);
     }
 
+    @Test
+    @Order(4)
+    public void testSearchBoardByNameApi() throws IOException, URISyntaxException{
+        String searchBoardId = boardApi.SearchBoardByNameApi(newBoardName);
+        Assertions.assertEquals(boardId, searchBoardId);
+    }
+
+
+    @Test
+    @Order(4)
+    public void testSearchCardByNameApi() throws IOException, URISyntaxException{
+        String searchCardId = cardApi.SearchCardByNameApi(newCardName);
+        Assertions.assertEquals(cadrId, searchCardId);
+    }
+
+    @Test
+    @Order(5)
+    public void testDeleteBoardApi() throws IOException, URISyntaxException{
+        int delBoardStatus = boardApi.DeleteBoardApi(boardId);
+        Assertions.assertEquals(200, delBoardStatus);
+    }
 
 }
