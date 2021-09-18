@@ -1,4 +1,4 @@
-package tests.api.pagesApi;
+package apiPages;
 
 import net.minidev.json.parser.ParseException;
 import org.apache.http.HttpEntity;
@@ -14,8 +14,7 @@ import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
 import org.json.JSONArray;
 import org.json.JSONObject;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
+
 
 import java.io.IOException;
 import java.net.URI;
@@ -26,7 +25,6 @@ public class Card {
 
     public final String KEY = "0a9e486762e8fec2cd7d6327d23869e1";
     public final String TOKEN = "e19d1c3441e45d4a21d4e1f72a7144e4c51dfd433cbb0171454314ec08ca81e1";
-    public final String DEFAULTLIST = "false";
 
     public String createNewCardApi(String idList, String cardName) throws URISyntaxException, IOException {
         CloseableHttpClient httpClient = HttpClients.createDefault();
@@ -96,8 +94,6 @@ public class Card {
                 .addParameter("key", KEY)
                 .addParameter("token", TOKEN)
                 .addParameter("query", cardName)
-                .addParameter("card_list", "true")
-                .addParameter("dsc", "ed85951402843d1b78ca87ed1a5811e8d85b637ca93a9bbba8f0bf0b077a1676")
                 .build();
         ((HttpRequestBase) getCard).setURI(uri);
         HttpResponse response = httpClient.execute(getCard);
@@ -105,7 +101,7 @@ public class Card {
         String content = EntityUtils.toString(entity);
 
         JSONObject obj = new JSONObject(content);
-//        System.out.println(obj.toString());
+        System.out.println(obj.toString());
         JSONArray arr = obj.getJSONArray("cards");
         String card_id = arr.getJSONObject(0).getString("id");
 

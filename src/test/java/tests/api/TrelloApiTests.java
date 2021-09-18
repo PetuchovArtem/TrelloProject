@@ -3,9 +3,9 @@ package tests.api;
 import net.minidev.json.parser.ParseException;
 
 import org.junit.jupiter.api.*;
-import tests.api.pagesApi.Board;
-import tests.api.pagesApi.Card;
-import tests.api.pagesApi.Lists;
+import apiPages.Board;
+import apiPages.Card;
+import apiPages.Lists;
 
 import java.io.IOException;
 import java.net.URISyntaxException;

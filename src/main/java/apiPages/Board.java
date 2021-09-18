@@ -1,4 +1,4 @@
-package tests.api.pagesApi;
+package apiPages;
 
 import net.minidev.json.parser.ParseException;
 import org.apache.commons.lang3.ObjectUtils;
@@ -15,8 +15,7 @@ import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
 import org.json.JSONArray;
 import org.json.JSONObject;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
+
 
 import java.io.IOException;
 import java.net.URI;
@@ -70,7 +69,7 @@ public class Board {
                 .addParameter("token", TOKEN)
                 .addParameter("query", boardName)
                 .addParameter("board_fields", "name%2Curl%2Cprefs")
-                .addParameter("dsc", "ed85951402843d1b78ca87ed1a5811e8d85b637ca93a9bbba8f0bf0b077a1676")
+//                .addParameter("dsc", "ed85951402843d1b78ca87ed1a5811e8d85b637ca93a9bbba8f0bf0b077a1676")
                 .build();
         ((HttpRequestBase) getBoard).setURI(uri);
         HttpResponse response = httpClient.execute(getBoard);
