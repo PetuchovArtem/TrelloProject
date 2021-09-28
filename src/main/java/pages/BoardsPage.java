@@ -8,7 +8,7 @@ import static com.codeborne.selenide.Selenide.page;
 public class BoardsPage {
 
 
-    @FindBy(xpath = "//*[@id=\"header\"]/div[2]/div[1]/button/p")
+    @FindBy(xpath = "//button[@data-test-id=\"header-create-menu-button\"]")
     private SelenideElement createButton;
 
     @FindBy(xpath = "//div[@title=\"name12\"]")

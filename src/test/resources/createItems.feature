@@ -20,6 +20,20 @@ Feature: Work with board and boards Items
       And user is moving card in new list
       Then card is moved
 
+
+  Scenario: Fiend board by name
+
+    When a user is logged in Trello
+    And user is searching a board by name
+    Then board is founded
+
+
+  Scenario: Fiend card by name
+
+    When a user is logged in Trello
+    And user is searching a card by name
+    Then card is founded
+
   Scenario:  Delete board by id
     When a user is logged in Trello
     And user is deleting last board

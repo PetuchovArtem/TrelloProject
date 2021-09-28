@@ -12,9 +12,10 @@ public class LoginPage {
     private SelenideElement loginButton;
 
     public InputLoginPage clickLoginButton() {
-        loginButton.click();
+         loginButton.click();
+
         return page(InputLoginPage.class);
-    }
+            }
 
 
 }
