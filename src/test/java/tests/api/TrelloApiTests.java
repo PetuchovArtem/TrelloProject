@@ -103,7 +103,7 @@ public class TrelloApiTests {
 
     @Test
     @Tags(value =
-            {       @Tag("API"),
+            {       @Tag("ALLAPI"),
                     @Tag("APIandUI")
             })
     @Order(4)
