@@ -66,7 +66,7 @@ public class CurrentBoardPage {
     @FindBy(xpath = "//span[@class=\"board-header-btn-text\" and text() = \"Show menu\"]")
     private SelenideElement showMenuButton;
 
-    @FindBy(xpath = "//*[@id=\"content\"]/div/div[2]/div/div/div[2]/div/ul[1]/li[6]/a")
+    @FindBy(xpath = "//a[@class=\"board-menu-navigation-item-link js-open-more\"]")
     private SelenideElement moreMenuButton;
 
     @FindBy(xpath = "//a[@class=\"board-menu-navigation-item-link js-close-board\"]")

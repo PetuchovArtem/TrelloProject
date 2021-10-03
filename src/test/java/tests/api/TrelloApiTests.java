@@ -33,7 +33,11 @@ public class TrelloApiTests {
     public final String newCardName = "newCardApi";
 
     @Test
-    @Tag("API")
+    @Tags(value =
+            {       @Tag("API"),
+                    @Tag("APIandUI"),
+                    @Tag("ALLAPI")
+            })
     @Order(1)
     public void testCreateBoardApi() throws ParseException, IOException, URISyntaxException {
         logger.info("testCreateBoardApi is started");
@@ -45,7 +49,11 @@ public class TrelloApiTests {
     }
 
     @Test
-    @Tag("API")
+    @Tags(value =
+            {       @Tag("API"),
+                    @Tag("APIandUI"),
+                    @Tag("ALLAPI")
+            })
     @Order(2)
     public void testCreateNewListWithCardApi() throws IOException, URISyntaxException{
         logger.info("testCreateNewListWithCardApi is started");
@@ -61,7 +69,11 @@ public class TrelloApiTests {
     }
 
     @Test
-    @Tag("API")
+    @Tags(value =
+            {       @Tag("API"),
+                    @Tag("APIandUI"),
+                    @Tag("ALLAPI")
+            })
     @Order(3)
     public void testMoveCardApi() throws IOException, URISyntaxException{
         logger.info("testMoveCardApi is started");
@@ -75,7 +87,11 @@ public class TrelloApiTests {
     }
 
     @Test
-    @Tag("API")
+    @Tags(value =
+            {       @Tag("API"),
+                    @Tag("APIandUI"),
+                    @Tag("ALLAPI")
+            })
     @Order(4)
     public void testSearchBoardByNameApi() throws IOException, URISyntaxException{
         logger.info("testSearchBoardByNameApi is started");
@@ -86,7 +102,10 @@ public class TrelloApiTests {
     }
 
     @Test
-    @Tag("API")
+    @Tags(value =
+            {       @Tag("API"),
+                    @Tag("APIandUI")
+            })
     @Order(4)
     public void testSearchCardByNameApi() throws IOException, URISyntaxException{
         logger.info("testSearchCardByNameApi is started");
@@ -97,7 +116,11 @@ public class TrelloApiTests {
     }
 
     @Test
-    @Tag("API")
+    @Tags(value =
+            {       @Tag("API"),
+                    @Tag("APIandUI"),
+                    @Tag("ALLAPI")
+            })
     @Order(5)
     public void testDeleteBoardApi() throws IOException, URISyntaxException{
         logger.info("testDeleteBoardApi is started");

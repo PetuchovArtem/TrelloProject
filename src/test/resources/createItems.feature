@@ -21,14 +21,14 @@ Feature: Work with board and boards Items
       Then card is moved
 
 
-  Scenario: Fiend board by name
+  Scenario: Search board by name
 
     When a user is logged in Trello
     And user is searching a board by name
     Then board is founded
 
 
-  Scenario: Fiend card by name
+  Scenario: Search card by name
 
     When a user is logged in Trello
     And user is searching a card by name

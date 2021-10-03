@@ -5,6 +5,7 @@ import com.codeborne.selenide.Configuration;
 import io.qameta.allure.Description;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Features;
+import io.qameta.allure.Flaky;
 import org.apache.log4j.Logger;
 import org.junit.jupiter.api.*;
 import pages.CurrentBoardPage;
@@ -46,7 +47,11 @@ public class TrelloTest {
     }
 
     @Test
-    @Tag("UI")
+    @Tags(value =
+            {@Tag("ALLUI"),
+                    @Tag("UI"),
+                    @Tag("APIandUI")
+            })
     @Description("Create new board")
     @Feature(value = "Boards")
     @Order(1)
@@ -63,7 +68,11 @@ public class TrelloTest {
     }
 
     @Test
-    @Tag("UI")
+    @Tags(value =
+            {@Tag("ALLUI"),
+                    @Tag("UI"),
+                    @Tag("APIandUI")
+            })
     @Description("Create new list and card")
     @Features(value = {@Feature(value = "Cards"), @Feature(value = "Lists")})
     @Order(2)
@@ -86,7 +95,11 @@ public class TrelloTest {
     }
 
     @Test
-    @Tag("UI")
+    @Tags(value =
+            {@Tag("ALLUI"),
+                    @Tag("UI"),
+                    @Tag("APIandUI")
+            })
     @Description("Move card")
     @Feature(value = "Cards")
     @Order(3)
@@ -105,7 +118,11 @@ public class TrelloTest {
 
 
     @Test
-    @Tag("UI")
+    @Tags(value =
+            {@Tag("ALLUI"),
+                    @Tag("UI"),
+                    @Tag("APIandUI")
+            })
     @Description("Search board by name")
     @Feature(value = "Search")
     @Order(4)
@@ -120,8 +137,12 @@ public class TrelloTest {
     }
 
     @Test
-    @Tag("UI")
+    @Tags(value =
+            {@Tag("ALLUI"),
+                   @Tag("APIandUI")
+            })
     @Description("Search card by name")
+    @Flaky
     @Feature(value = "Search")
     @Order(4)
     public void testSearchCardByName() {
@@ -134,7 +155,11 @@ public class TrelloTest {
     }
 
     @Test
-    @Tag("UI")
+    @Tags(value =
+            {@Tag("ALLUI"),
+                    @Tag("UI"),
+                    @Tag("APIandUI")
+            })
     @Description("Delete board")
     @Feature(value = "Boards")
     @Order(5)
