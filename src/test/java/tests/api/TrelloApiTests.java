@@ -23,14 +23,14 @@ public class TrelloApiTests {
     Board boardApi=new Board();
     Card cardApi = new Card();
     Lists listApi = new Lists();
-    public static String boardId = "";
-    public static String listid = "";
-    public static String secondListId = "";
-    public static String cadrId = "";
-    public static String newBoardName = "NewBoardApi";
-    public final String newListName = "newListName1";
-    public static String secondListName = "newListName2";
-    public final String newCardName = "newCardApi";
+    private static String boardId = "";
+    private static String listid = "";
+    private static String secondListId = "";
+    private static String cadrId = "";
+    private static String newBoardName = "NewBoardApi";
+    private final String newListName = "newListName1";
+    private static String secondListName = "newListName2";
+    private final String newCardName = "newCardApi";
 
     @Test
     @Tags(value =

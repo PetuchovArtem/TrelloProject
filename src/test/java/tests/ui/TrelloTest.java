@@ -18,22 +18,22 @@ import static com.codeborne.selenide.Selenide.*;
 public class TrelloTest {
 
     public LoginPage mainPage;
-    public String newBoardName = "name12";
-    public String newListName = "newListName1";
-    public String newCardName = "newCardName1";
-    public String secondListName = "SecondList";
+    private String newBoardName = "name12";
+    private String newListName = "newListName1";
+    private String newCardName = "newCardName1";
+    private String secondListName = "SecondList";
 
     public static Logger logger = Logger.getLogger(TrelloTest.class);
 
 
-    @BeforeAll
-    public static void setUp() {
-        logger.info("Browser configuration start");
-        Configuration.browser = "chrome";
-        Configuration.startMaximized = true;
-        System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
-        logger.info("Browser configurated success");
-    }
+//    @BeforeAll
+//    public static void setUp() {
+//        logger.info("Browser configuration start");
+//        Configuration.browser = "chrome";
+//        Configuration.startMaximized = true;
+//        System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
+//        logger.info("Browser configurated success");
+//    }
 
     @BeforeEach
     public void Autorization() {
