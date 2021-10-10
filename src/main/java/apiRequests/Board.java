@@ -1,7 +1,6 @@
-package apiPages;
+package apiRequests;
 
 import net.minidev.json.parser.ParseException;
-import org.apache.commons.lang3.ObjectUtils;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.methods.HttpDelete;
@@ -25,9 +24,9 @@ import java.net.URISyntaxException;
 public class Board {
 
 
-    public final String KEY = "0a9e486762e8fec2cd7d6327d23869e1";
-    public final String TOKEN = "e19d1c3441e45d4a21d4e1f72a7144e4c51dfd433cbb0171454314ec08ca81e1";
-    public final String DEFAULTLIST = "false";
+    private final String KEY = "0a9e486762e8fec2cd7d6327d23869e1";
+    private final String TOKEN = "e19d1c3441e45d4a21d4e1f72a7144e4c51dfd433cbb0171454314ec08ca81e1";
+    private final String DEFAULTLIST = "false";
 
 
     public String createBoarApi(String boardName) throws IOException, URISyntaxException, ParseException {
@@ -53,12 +52,12 @@ public class Board {
 
         JSONObject album = body.getJSONObject(0);
         String boardId = album.getString("id");
-//        System.out.println(boardId);
+
 
         return boardId;
     }
 
-    //    String searchParam
+
 
 
     public String SearchBoardByNameApi(String boardName) throws URISyntaxException, IOException {

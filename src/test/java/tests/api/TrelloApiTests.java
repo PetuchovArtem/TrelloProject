@@ -4,10 +4,9 @@ import net.minidev.json.parser.ParseException;
 
 import org.apache.log4j.Logger;
 import org.junit.jupiter.api.*;
-import apiPages.Board;
-import apiPages.Card;
-import apiPages.Lists;
-import tests.ui.TrelloTest;
+import apiRequests.Board;
+import apiRequests.Card;
+import apiRequests.Lists;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
@@ -28,9 +27,9 @@ public class TrelloApiTests {
     private static String secondListId = "";
     private static String cadrId = "";
     private static String newBoardName = "NewBoardApi";
-    private final String newListName = "newListName1";
+    private static String newListName = "newListName1";
     private static String secondListName = "newListName2";
-    private final String newCardName = "newCardApi";
+    private static String newCardName = "newCardApi";
 
     @Test
     @Tags(value =

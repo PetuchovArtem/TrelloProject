@@ -1,4 +1,4 @@
-package apiPages;
+package apiRequests;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -16,8 +16,8 @@ import java.net.URISyntaxException;
 
 public class Autorithation {
 
-    public final String KEY= "0a9e486762e8fec2cd7d6327d23869e1";
-    public final String TOKEN= "e19d1c3441e45d4a21d4e1f72a7144e4c51dfd433cbb0171454314ec08ca81e1";
+    private final String KEY= "0a9e486762e8fec2cd7d6327d23869e1";
+    private final String TOKEN= "e19d1c3441e45d4a21d4e1f72a7144e4c51dfd433cbb0171454314ec08ca81e1";
 
 
     public void  authorize () throws URISyntaxException, IOException {

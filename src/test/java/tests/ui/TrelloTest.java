@@ -26,15 +26,6 @@ public class TrelloTest {
     public static Logger logger = Logger.getLogger(TrelloTest.class);
 
 
-//    @BeforeAll
-//    public static void setUp() {
-//        logger.info("Browser configuration start");
-//        Configuration.browser = "chrome";
-//        Configuration.startMaximized = true;
-//        System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
-//        logger.info("Browser configurated success");
-//    }
-
     @BeforeEach
     public void Autorization() {
         mainPage = open("https://trello.com/", LoginPage.class);
